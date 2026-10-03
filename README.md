@@ -128,7 +128,18 @@ npm run build
 
 ## Deployment
 
-This project is ready for static deployment on Vercel, Netlify, or Cloudflare Pages. Since the current app uses mock data, deployment is straightforward and does not require a server.
+This project is ready for static deployment on Vercel. It uses mock data, so no environment variables or backend services are required. `vercel.json` configures the Vite production build and sends client-side routes back to the app, so refreshing a product or account URL works.
+
+### Deploy with GitHub and Vercel
+
+1. Push the `E-commercePlatform` project directory to a GitHub repository. Run Git commands from this directory, which contains the project `.git` folder. Include `package.json` and `package-lock.json`; do not upload `node_modules` or `dist`.
+2. In Vercel, choose **Add New... → Project**, connect GitHub, and import the repository.
+3. If prompted, use the Vite preset and set the project root to the directory containing this `package.json`.
+4. Use `npm install` as the install command, `npm run build` as the build command, and `dist` as the output directory. These are also recorded in `vercel.json`.
+5. Select **Deploy**. Vercel will deploy the selected branch and create preview deployments for later pushes.
+6. Test the deployed homepage and refresh a nested route such as `/product/p-101` to confirm client-side routing works.
+
+For future updates, commit and push changes to the connected GitHub branch; Vercel will build and deploy them automatically.
 
 ## Future backend architecture
 
